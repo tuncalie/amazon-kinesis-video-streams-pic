@@ -42,7 +42,7 @@ UINT64 defaultGetTime()
     return (UINT64) nowTime.tv_sec * HUNDREDS_OF_NANOS_IN_A_SECOND + (UINT64) nowTime.tv_usec * HUNDREDS_OF_NANOS_IN_A_MICROSECOND;
 #else
     struct timespec nowTime;
-    clock_gettime(CLOCK_REALTIME, &nowTime);
+    clock_gettime(CLOCK_MONOTONIC, &nowTime);
 
     // The precision needs to be on a 100th nanosecond resolution
     return (UINT64) nowTime.tv_sec * HUNDREDS_OF_NANOS_IN_A_SECOND + (UINT64) nowTime.tv_nsec / DEFAULT_TIME_UNIT_IN_NANOS;
