@@ -43,6 +43,8 @@ UINT64 defaultGetTime()
 #else
     struct timespec nowTime;
     clock_gettime(CLOCK_MONOTONIC, &nowTime);
+    DLOGW("MONOTONIC TIME!");
+    DLOGW("MONOTONIC TIME: %lu, %lu", nowTime.tv_sec, nowTime.tv_nsec);
 
     // The precision needs to be on a 100th nanosecond resolution
     return (UINT64) nowTime.tv_sec * HUNDREDS_OF_NANOS_IN_A_SECOND + (UINT64) nowTime.tv_nsec / DEFAULT_TIME_UNIT_IN_NANOS;
